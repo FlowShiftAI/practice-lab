@@ -1,12 +1,18 @@
-"""ISBN番号から書籍情報を取得して表示するCLIプログラム。"""
+"""Open Library API経由でISBNから書籍情報を取得するCLI。"""
 
 from __future__ import annotations
 
+import argparse
 import json
 from urllib import error, parse, request
 
 OPEN_LIBRARY_API = "https://openlibrary.org/api/books"
 NOT_FOUND_MESSAGE = "該当する書籍が見つかりません"
+
+
+def normalize_isbn(isbn: str) -> str:
+    """ISBN入力値からハイフンと空白を除去する。"""
+    return isbn.replace("-", "").replace(" ", "").strip()
 
 
 def fetch_book_info_by_isbn(isbn: str) -> dict[str, str] | None:
@@ -41,8 +47,19 @@ def fetch_book_info_by_isbn(isbn: str) -> dict[str, str] | None:
     }
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Open Library APIからISBNを使って書籍情報を取得します。"
+    )
+    parser.add_argument("--isbn", help="検索するISBN番号（ハイフン可）")
+    return parser.parse_args()
+
+
 def main() -> None:
-    isbn = input("ISBN番号を入力してください: ").strip()
+    args = parse_args()
+    raw_isbn = args.isbn if args.isbn else input("ISBN番号を入力してください: ")
+    isbn = normalize_isbn(raw_isbn)
+
     if not isbn:
         print("ISBN番号を入力してください")
         return
@@ -53,6 +70,7 @@ def main() -> None:
         return
 
     print("書籍情報:")
+    print(f"ISBN: {isbn}")
     print(f"タイトル: {book_info['title']}")
     print(f"著者: {book_info['authors']}")
     print(f"出版日: {book_info['publish_date']}")

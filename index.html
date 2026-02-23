@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI勉強会 告知ページ</title>
+  <style>
+    :root {
+      --bg: #f4f7ff;
+      --card: #ffffff;
+      --text: #1f2a44;
+      --muted: #59607a;
+      --primary: #5b7cff;
+      --secondary: #7bdbff;
+      --accent: #7ae4b8;
+      --shadow: 0 20px 50px rgba(62, 85, 180, 0.18);
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(123, 219, 255, 0.35), transparent 36%),
+        radial-gradient(circle at 88% 14%, rgba(91, 124, 255, 0.28), transparent 32%),
+        var(--bg);
+      display: grid;
+      place-items: center;
+      padding: 32px 16px;
+    }
+
+    .announcement {
+      width: min(960px, 100%);
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+    }
+
+    .hero {
+      position: relative;
+      min-height: clamp(260px, 40vw, 420px);
+      padding: clamp(20px, 3vw, 34px);
+      background:
+        linear-gradient(125deg, rgba(91, 124, 255, 0.9) 5%, rgba(123, 219, 255, 0.88) 50%, rgba(122, 228, 184, 0.87) 100%);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -36% auto;
+      width: 65%;
+      height: 80%;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      filter: blur(2px);
+      z-index: -1;
+    }
+
+    .screen {
+      height: 100%;
+      min-height: 220px;
+      background: rgba(13, 22, 55, 0.75);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: inset 0 2px 12px rgba(255, 255, 255, 0.08), 0 18px 28px rgba(21, 35, 90, 0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .screen__top {
+      display: flex;
+      gap: 8px;
+      padding: 12px 14px;
+      background: rgba(4, 9, 26, 0.56);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .dot:nth-child(1) { background: #ff8d8d; }
+    .dot:nth-child(2) { background: #ffd88d; }
+    .dot:nth-child(3) { background: #a8efb5; }
+
+    .screen__body {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      color: #f5f8ff;
+      text-align: center;
+      padding: 24px;
+      background:
+        linear-gradient(180deg, rgba(123, 219, 255, 0.08), transparent),
+        radial-gradient(circle at 30% 30%, rgba(123, 219, 255, 0.25), transparent 50%);
+    }
+
+    .screen__body h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      letter-spacing: 0.04em;
+    }
+
+    .screen__body p {
+      margin: 12px 0 0;
+      color: rgba(245, 248, 255, 0.86);
+      font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+    }
+
+    .details {
+      display: grid;
+      gap: 16px;
+      padding: clamp(20px, 4vw, 34px);
+      background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 10px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid rgba(91, 124, 255, 0.15);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 20px rgba(66, 78, 128, 0.08);
+    }
+
+    .label {
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.03em;
+    }
+
+    .value {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    @media (max-width: 640px) {
+      .item {
+        grid-template-columns: 1fr;
+      }
+
+      .label {
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="announcement" aria-label="社内AI勉強会の告知">
+    <section class="hero">
+      <div class="screen" role="img" aria-label="AI勉強会のメインビジュアル">
+        <div class="screen__top">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="screen__body">
+          <div>
+            <h1>社内 AI 勉強会</h1>
+            <p>最新トレンドをキャッチアップし、明日の業務に活かそう</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="details">
+      <article class="item">
+        <span class="label">タイトル</span>
+        <span class="value">AIを業務で活かす実践アイデア共有会</span>
+      </article>
+      <article class="item">
+        <span class="label">開催日時</span>
+        <time class="value" datetime="2026-03-12T19:00">2026年3月12日（木）19:00〜20:30</time>
+      </article>
+      <article class="item">
+        <span class="label">場所</span>
+        <span class="value">本社 8F イノベーションラウンジ（オンライン配信あり）</span>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

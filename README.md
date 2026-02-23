@@ -10,3 +10,10 @@ This repository is for learning how GitHub works.
 
 ## Next Step
 Create a real business repository.
+
+## Python Example
+Run the sample script:
+
+```bash
+python3 simple_program.py
+```

@@ -2,8 +2,14 @@
 
 
 def main() -> None:
-    """Print a friendly greeting."""
-    print("Hello from practice-lab!")
+    """Ask the user for their name and print a friendly greeting."""
+    name = input("あなたの名前を入力してください: ").strip()
+
+    if not name:
+        print("Hello from practice-lab!")
+        return
+
+    print(f"こんにちは、{name}さん！ practice-labへようこそ。")
 
 
 if __name__ == "__main__":
